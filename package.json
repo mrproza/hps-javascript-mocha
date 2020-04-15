@@ -1,7 +1,7 @@
 {
   "name": "coffee-machine",
   "devDependencies": {
-    "mocha": "^2.3.4",
+    "mocha": "^2.5.3",
     "mocha-junit-reporter": "^1.9.1"
   },
   "scripts": {
