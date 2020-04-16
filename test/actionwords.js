@@ -108,5 +108,9 @@ exports.Actionwords = {
     });
 
     assert.deepEqual(this.sut.getSettings(), settings);
+  },
+
+  aNotificationAboutDescalingIsDisplayed: function () {
+    assert.equal(false, this.sut.isDescalingNeeded());
   }
 };
