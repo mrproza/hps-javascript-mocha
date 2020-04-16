@@ -6,10 +6,10 @@ before_install:
   - rvm install 2.3
   - rvm use 2.3
   - gem install hiptest-publisher
-  - hiptest-publisher -c mocha.conf --only=tests --test-run-id=392823
+  - hiptest-publisher -c mocha.conf --only=tests --test-run-id=394236
 
 script:
   - mocha test --recursive --reporter mocha-junit-reporter
 
 after_script:
-  - hiptest-publisher -c mocha.conf --push=test-results.xml --test-run-id=392823
+  - hiptest-publisher -c mocha.conf --push=test-results.xml --test-run-id=394236
