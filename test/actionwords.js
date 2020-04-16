@@ -111,6 +111,6 @@ exports.Actionwords = {
   },
 
   aNotificationAboutDescalingIsDisplayed: function () {
-    assert.equal(false, this.sut.isDescalingNeeded());
+    assert.equal(true, this.sut.isDescalingNeeded());
   }
 };
