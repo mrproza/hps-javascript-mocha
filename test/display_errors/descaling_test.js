@@ -10,12 +10,12 @@ describe('Descaling', function () {
     this.actionwords.iHandleBeans();
   });
 
-  it('Descaling is needed after 500 coffees', function () {
+  it('Message "Descaling is needed" is displayed after 500 coffees are taken', function () {
     // Given the coffee machine is started
     this.actionwords.theCoffeeMachineIsStarted();
     // When I take "500" coffees
     this.actionwords.iTakeCoffeeNumberCoffees("500");
-    // Then a notification about descaling is displayed
-    this.actionwords.aNotificationAboutDescalingIsDisplayed();
+    // Then message "Descaling is needed" should be displayed
+    this.actionwords.messageMessageShouldBeDisplayed("Descaling is needed");
   });
 });

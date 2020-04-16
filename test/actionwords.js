@@ -109,8 +109,4 @@ exports.Actionwords = {
 
     assert.deepEqual(this.sut.getSettings(), settings);
   },
-
-  aNotificationAboutDescalingIsDisplayed: function () {
-    assert.equal(true, this.sut.isDescalingNeeded());
-  }
 };
