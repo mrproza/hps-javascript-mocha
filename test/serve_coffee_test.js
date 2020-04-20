@@ -14,4 +14,15 @@ describe('Serve coffee', function () {
     // Then coffee should be served
     this.actionwords.coffeeShouldBeServed();
   });
+
+  it('I can serve coffee to 5 my friends without a problem', function () {
+    // Well, sometimes, you just get a coffee.
+    // Tags: priority:high
+    // Given the coffee machine is started
+    this.actionwords.theCoffeeMachineIsStarted();
+    // When I take "5" coffees
+    this.actionwords.iTakeCoffeeNumberCoffees(5);
+    // Then coffee should be served
+    this.actionwords.coffeeShouldBeServed();
+  });
 });
