@@ -29,6 +29,10 @@ exports.Actionwords = {
     this.sut.emptyGrounds();
   },
 
+  iDescaleTheMachine: function () {
+    this.sut.descale();
+  },
+
   iFillTheBeansTank: function () {
     this.sut.fillBeans();
   },
@@ -55,6 +59,11 @@ exports.Actionwords = {
       if (this.handled.indexOf('grounds') >= 0) {
         this.iEmptyTheCoffeeGrounds();
       }
+
+      if (this.handled.indexOf('descaling') >= 0) {
+        this.iDescaleTheMachine();
+      }
+
     }
   },
 
@@ -75,6 +84,11 @@ exports.Actionwords = {
   iHandleCoffeeGrounds: function () {
     this.handled = this.handled || [];
     this.handled.push('grounds');
+  },
+
+  iHandleDescaling: function () {
+    this.handled = this.handled || [];
+    this.handled.push('descaling');
   },
 
   iHandleEverythingExceptTheWaterTank: function () {

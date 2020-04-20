@@ -18,4 +18,14 @@ describe('Descaling', function () {
     // Then message "Descaling is needed" should be displayed
     this.actionwords.messageMessageShouldBeDisplayed("Descaling is needed");
   });
+
+  it('Message "Coffee machine is broken" is displayed after 5000 caps of coffee', function () {
+    this.actionwords.iHandleDescaling();
+    // Given the coffee machine is started
+    this.actionwords.theCoffeeMachineIsStarted();
+    // When I take "5000" coffees
+    this.actionwords.iTakeCoffeeNumberCoffees("5000");
+    // Then message "Coffee machine is broken" should be displayed
+    this.actionwords.messageMessageShouldBeDisplayed("Coffee machine is broken");
+  });
 });

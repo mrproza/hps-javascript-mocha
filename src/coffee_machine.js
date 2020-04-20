@@ -5,6 +5,7 @@ exports.CoffeeMachine = function CoffeeMachine () {
     _beans: 40,
     _grounds: 0,
     _countdownToDescale: 500,
+    _countdownToTermination: 5000,
     _started: false,
     _coffeeServed: false,
     _message: '',
@@ -21,7 +22,8 @@ exports.CoffeeMachine = function CoffeeMachine () {
       grounds: 'Empty grounds',
       ready: 'Ready',
       settings: 'Settings:\n - 1: water hardness\n - 2: grinder',
-      descale: 'Descaling is needed'
+      descale: 'Descaling is needed',
+      terminate: 'Coffee machine is broken'
     },
 
     fr: {
@@ -30,7 +32,8 @@ exports.CoffeeMachine = function CoffeeMachine () {
       grounds: 'Vider marc',
       ready: 'Pret',
       settings: 'Configurer:\n - 1: durete de l eau\n - 2: mouture',
-      descale: 'Detartrage requisd'
+      descale: 'Detartrage requisd',
+      terminate: 'Coffee machine is broken'
     }
   }
 
@@ -94,6 +97,11 @@ exports.CoffeeMachine = function CoffeeMachine () {
       return;
     }
 
+    if (instance.isTermination()) {
+      instance.set('message', messages.terminate);
+      return;
+    }
+
     instance.set('message', messages.ready);
   }
 
@@ -102,6 +110,7 @@ exports.CoffeeMachine = function CoffeeMachine () {
   instance.addListener('beans', updateMessage);
   instance.addListener('grounds', updateMessage);
   instance.addListener('countdownToDescale', updateMessage);
+  instance.addListener('countdownToTermination', updateMessage);
   instance.addListener('settingsDisplayed', updateMessage);
 
 
@@ -130,6 +139,7 @@ exports.CoffeeMachine = function CoffeeMachine () {
     instance.set('beans', instance.get('beans') - 1);
     instance.set('grounds', instance.get('grounds') + 1);
     instance.set('countdownToDescale', instance.get('countdownToDescale') - 1);
+    instance.set('countdownToTermination', instance.get('countdownToTermination') - 1);
   }
 
   instance.fillTank = function () {
@@ -159,8 +169,16 @@ exports.CoffeeMachine = function CoffeeMachine () {
     this.set('countdownToDescale', 500);
   }
 
+  instance.terminate = function () {
+    this.set('countdownToTermination', 5000);
+  }
+
   instance.isDescalingNeeded = function () {
     return this.get('countdownToDescale') <= 0;
+  }
+
+  instance.isTermination = function () {
+    return this.get('countdownToTermination') <= 0;
   }
 
   return instance;
