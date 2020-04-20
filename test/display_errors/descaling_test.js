@@ -20,8 +20,6 @@ describe('Descaling', function () {
   });
 
   it('Message "Coffee machine is broken" is displayed after 5000 caps of coffee', function () {
-    // Given I handle descaling
-    this.actionwords.iHandleDescaling();
     // And the coffee machine is started
     this.actionwords.theCoffeeMachineIsStarted();
     // When I take "5000" coffees
